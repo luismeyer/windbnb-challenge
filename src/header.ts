@@ -17,14 +17,26 @@ const childCount = getRequiredElementById("child-count");
 
 const searchButton = getRequiredElementById("search-button");
 
+const shim = getRequiredElementById("shim");
+
 const HEADER_OPEN_CLASS = "header-open";
 
 function openFilterHeader() {
   header.classList.add(HEADER_OPEN_CLASS);
+
+  document.body.style.overflow = "hidden";
+}
+
+function closeFilterHeader() {
+  header.classList.remove(HEADER_OPEN_CLASS);
+
+  document.body.style.overflow = "scroll";
 }
 
 function updateGuestInput(adult: number, child: number) {
-  guestInput.value = `${adult + child} guests`;
+  const count = adult + child;
+  guestInput.value = count > 1 ? `${count} Guests` : `${count} Guest`;
+
   adultCount.textContent = adult.toString();
   childCount.textContent = child.toString();
 }
@@ -49,7 +61,7 @@ function setupGuestInput(adult: number, child: number) {
   });
 
   adultMinus.addEventListener("click", () => {
-    if (adult < 1) {
+    if (adult <= 1) {
       return;
     }
 
@@ -63,7 +75,7 @@ function setupGuestInput(adult: number, child: number) {
   });
 
   childMinus.addEventListener("click", () => {
-    if (child < 1) {
+    if (child <= 1) {
       return;
     }
 
@@ -82,6 +94,14 @@ export function renderHeader() {
     openFilterHeader();
   });
 
+  shim.addEventListener("click", () => {
+    if (!header.classList.contains(HEADER_OPEN_CLASS)) {
+      return;
+    }
+
+    closeFilterHeader();
+  });
+
   const { adults, children } = filter.getState();
 
   // local state until the search button is clicked
@@ -91,12 +111,16 @@ export function renderHeader() {
   setupGuestInput(adult, child);
 
   searchButton.addEventListener("click", () => {
-    header.classList.toggle(HEADER_OPEN_CLASS);
+    if (header.classList.contains(HEADER_OPEN_CLASS)) {
+      closeFilterHeader();
 
-    filter.setState({
-      location: locationInput.value ?? "",
-      children: adult,
-      adults: child,
-    });
+      filter.setState({
+        location: locationInput.value ?? "",
+        children: adult,
+        adults: child,
+      });
+    } else {
+      openFilterHeader();
+    }
   });
 }

@@ -1,22 +1,39 @@
-header {
-  padding: 32px 96px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  align-items: center;
+#header {
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
+}
+
+#header-filters {
+  padding: 32px 96px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
   background-color: white;
 }
 
-.header-open {
+.header-open #header-filters {
   grid-template-columns: 1fr;
   padding: 96px 96px;
 }
 
 .header-open #logo {
   display: none;
+}
+
+#shim {
+  display: none;
+  background-color: black;
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+}
+
+.header-open #shim {
+  display: block;
 }
 
 #filters {
@@ -68,14 +85,14 @@ header {
 .header-open .filter-options {
   display: flex;
   padding-right: 127px;
-  margin-top: 16px;
+  margin-top: 32px;
 }
 
 .options {
   width: 50%;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
 }
 
 .guest-option {
