@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,maximum-scale=5"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <title>Devchallenges</title>
+  </head>
+
+  <body>
+    <header id="header">
+      <img id="logo" src="logo.svg" alt="logo" />
+
+      <div id="filters">
+        <input
+          id="location-input"
+          class="filter"
+          type="text"
+          placeholder="Location"
+        />
+
+        <input
+          id="guest-input"
+          class="filter"
+          type="text"
+          placeholder="Guests"
+        />
+
+        <button class="filter" id="search-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="filter-options">
+        <div class="options" id="location-options">stuff</div>
+
+        <div class="options">
+          <div class="guest-option">
+            <span class="guest-title">Adults</span>
+            <span class="guest-info">Ages 13 or above</span>
+
+            <div class="guest-actions">
+              <button class="guest-button" id="adult-minus">
+                <img src="/minus.svg" />
+              </button>
+              <span class="guest-count" id="adult-count"> </span>
+              <button class="guest-button" id="adult-plus">
+                <img src="/plus.svg" />
+              </button>
+            </div>
+          </div>
+
+          <div class="guest-option">
+            <span class="guest-title">Children</span>
+            <span class="guest-info">Ages 2-12</span>
+
+            <div class="guest-actions">
+              <button class="guest-button" id="child-minus">
+                <img src="/minus.svg" />
+              </button>
+              <span class="guest-count" id="child-count"></span>
+              <button class="guest-button" id="child-plus">
+                <img src="/plus.svg" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="result-info">
+        <h1 id="title">Stays all around the world</h1>
+
+        <span id="meta">12+ stays</span>
+      </div>
+
+      <div id="results"></div>
+    </main>
+
+    <script type="module" src="/src/client.ts"></script>
+  </body>
+</html>
